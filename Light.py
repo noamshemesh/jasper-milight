@@ -4,13 +4,19 @@ PRIORITY = 10
 WORDS = ["LIGHT", "LIGHTS", "ON", "OFF", "DIM", "WHITE", "FIRST", "SECOND", "THIRD", "FOURTH", "ALL"]
 
 template = re.compile(r'\(all|first|second|third|fourth)? ?lights? (on|off|white|dim)\b', re.IGNORECASE)
-words_to_numbers = {
-    'all': 0
-    'first': 1
-    'second': 2
-    'third': 3
-    'forth': 4
-}
+
+
+def words_to_numbers(name):
+    if name == 'all':
+        return 0
+    elif name == 'first':
+        return 1
+    elif name == 'second':
+        return 2
+    elif name == 'third':
+        return 3
+    elif name == 'forth':
+        return 4
 
 
 def isValid(text):
@@ -52,7 +58,7 @@ def handle(text, mic, profile):
     light_group_string = m.group(0)
     command = m.group(1).lower()
 
-    if !light_group_string:
+    if not light_group_string:
         light_group_string = 'all'
     light_group_string = light_group_string.lower()
     light_group_int = words_to_numbers[light_group_string]
