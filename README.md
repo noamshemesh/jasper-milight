@@ -4,4 +4,4 @@ Jasper module to turn on, turn off, set to white and dim your lights. supporting
 ### INSTALLATION
 1. clone this repository to a machine with [jasper](http://jasperproject.github.io/) installed
 1. run `pip install -r jasper-milight/requirements.txt` to install requirements (you may need root privileges)
-1. copy `Light.py` to `$JASPER_HOME/client/modules` (replace $JASPER_HOME with jasper home if not set)
+1. copy `jasper-milight/Light.py` to `$JASPER_HOME/client/modules` (replace $JASPER_HOME with jasper home if not set)
