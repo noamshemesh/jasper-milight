@@ -29,7 +29,7 @@ def message(text, command, group):
     else:
         message += 'Turning '
 
-    if group == 'all':
+    if group == 'all' or group == 'turn':
         message += 'all lights '
     else:
         message += group + ' group '
@@ -61,8 +61,11 @@ def handle(text, mic, profile):
     light_group_int = words_to_numbers[light_group_string]
 
     try:
-        if command == 'dim':
-            controller.send(light.brightness(50, light_group_int))
+        if command == 'dim' or command == 'white':
+            if (command == 'white') {
+                controller.send(light.white(light_group_int))
+            }
+            controller.send(light.brightness(50 if command == 'dim' else 100, light_group_int))
         else:
             print('sending to controller ' + command + '(' + str(light_group_int) + ')')
             lightCommand = getattr(light, command)
