@@ -73,10 +73,10 @@ def handle(text, mic, profile):
 
 
 # tests
-
-class Mic:
-    def say(a, b):
-        print(b)
-
-
-handle("all lights on", Mic(), {"milight": {"ip": "192.168.1.109"}})
+#
+# class Mic:
+#     def say(a, b):
+#         print(b)
+#
+#
+# handle("all lights on", Mic(), {"milight": {"ip": "192.168.1.109"}})
