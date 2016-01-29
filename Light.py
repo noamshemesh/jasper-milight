@@ -4,9 +4,10 @@ import re
 PRIORITY = 10
 WORDS = ["LIGHT", "LIGHTS", "ON", "OFF", "DIM", "WHITE", "FIRST", "SECOND", "THIRD", "FOURTH", "ALL"]
 
-template = re.compile(r'.*\b(all|first|second|third|fourth)\b.*\blights\b.*\b(on|off|white|dim)\b.*', re.IGNORECASE)
+template = re.compile(r'.*\b(turn|all|first|second|third|fourth)\b.*\blights\b.*\b(on|off|white|dim)\b.*', re.IGNORECASE)
 
 words_to_numbers = {
+    'turn': 0,
     'all': 0,
     'first': 1,
     'second': 2,
