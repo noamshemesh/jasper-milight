@@ -62,9 +62,8 @@ def handle(text, mic, profile):
 
     try:
         if command == 'dim' or command == 'white':
-            if (command == 'white') {
+            if (command == 'white'):
                 controller.send(light.white(light_group_int))
-            }
             controller.send(light.brightness(50 if command == 'dim' else 100, light_group_int))
         else:
             print('sending to controller ' + command + '(' + str(light_group_int) + ')')
