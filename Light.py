@@ -14,6 +14,7 @@ words_to_numbers = {
     'forth': 4
 }
 
+
 def isValid(text):
     return bool(template.search(text))
 
@@ -50,8 +51,8 @@ def handle(text, mic, profile):
     light = milight.LightBulb(bulb_type)
 
     m = template.search(text)
-    light_group_string = m.group(0)
-    command = m.group(1).lower()
+    light_group_string = m.group(1)
+    command = m.group(2).lower()
 
     if not light_group_string:
         light_group_string = 'all'
@@ -62,7 +63,20 @@ def handle(text, mic, profile):
         if command == 'dim':
             controller.send(light.brightness(50, light_group_int))
         else:
-            controller.send(light[command](light_group_string))
+            print('sending to controller ' + command + '(' + str(light_group_int) + ')')
+            lightCommand = getattr(light, command)
+            controller.send(lightCommand(light_group_int))
         mic.say(message(text, command, light_group_string))
-    except:
+    except Exception as e:
+        print(e)
         mic.say('Fail to send command to lights')
+
+
+# tests
+#
+# class Mic:
+#     def say(a, b):
+#         print(b)
+#
+#
+# handle("all lights on", Mic(), {"milight": {"ip": "192.168.1.109"}})
