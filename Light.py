@@ -1,23 +1,18 @@
 import milight
+import re
 
 PRIORITY = 10
 WORDS = ["LIGHT", "LIGHTS", "ON", "OFF", "DIM", "WHITE", "FIRST", "SECOND", "THIRD", "FOURTH", "ALL"]
 
-template = re.compile(r'\(all|first|second|third|fourth)? ?lights? (on|off|white|dim)\b', re.IGNORECASE)
+template = re.compile(r'.*\b(all|first|second|third|fourth)\b.*\blights\b.*\b(on|off|white|dim)\b.*', re.IGNORECASE)
 
-
-def words_to_numbers(name):
-    if name == 'all':
-        return 0
-    elif name == 'first':
-        return 1
-    elif name == 'second':
-        return 2
-    elif name == 'third':
-        return 3
-    elif name == 'forth':
-        return 4
-
+words_to_numbers = {
+    'all': 0,
+    'first': 1,
+    'second': 2,
+    'third': 3,
+    'forth': 4
+}
 
 def isValid(text):
     return bool(template.search(text))
