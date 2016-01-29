@@ -43,9 +43,9 @@ def message(text, command, group):
 
 def handle(text, mic, profile):
     ip = profile['milight']['ip']
-    port = profile['milight']['port'] or 8899
-    wait_duration = profile['milight']['wait_duration'] or 200
-    bulb_type = profile['milight']['bulb_type'] or ['rgbw']
+    port = profile['milight']['port'] if hasattr(profile['milight'], 'port') else 8899
+    wait_duration = profile['milight']['wait_duration'] if hasattr(profile['milight'], 'wait_duration') else 200
+    bulb_type = profile['milight']['bulb_type'] if hasattr(profile['milight'], 'bulb_type') else ['rgbw']
     controller = milight.MiLight({'host': ip, 'port': port}, wait_duration=wait_duration)
     light = milight.LightBulb(bulb_type)
 
